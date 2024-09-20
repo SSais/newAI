@@ -47,22 +47,33 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Generate an Inspiring Quote</h1>
+    <div className="container">
+    <div className="card-header">
+      <h1 className="card-title">Uplift AI</h1>
+      <p className="card-subtitle">Generate an inspiring quote based on your feelings</p>
+    </div>
+    <div className="card-content">
       <input
         type="text"
         value={feeling}
         onChange={(e) => setFeeling(e.target.value)}
-        placeholder="Enter how you're feeling"
+        placeholder="How are you feeling?"
+        className="input"
       />
-      <button onClick={getAIQuote}>Generate Quote</button>
-
+      <button 
+        onClick={getAIQuote}
+        className="button"
+        disabled={isWaiting}
+      >
+        {isWaiting ? 'Generating...' : 'Get Inspired'}
+      </button>
       {quote && (
-        <div>
-          <h2>Inspiring Quote:</h2>
-          <p>{quote}</p>
+        <div className="quote-container">
+          <h2 className="quote-title">Your Inspiration:</h2>
+          <p className="quote-text">{quote}</p>
         </div>
       )}
     </div>
+</div>
   );
 }
